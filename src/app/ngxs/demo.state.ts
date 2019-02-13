@@ -37,9 +37,11 @@ export class DemoState {
 
     @Action(FetchLego)
     fetchLego(ctx: StateContext<DemoStateModel>) {
+        ctx.patchState({
+            legoOfTheDay: '????',
+        });
         return this.legoService.getLegoOfTheDay().pipe(
             tap(result => {
-                console.log(`LOTD is ${result}`);
                 ctx.dispatch(new FetchLegoSuccess(result));
             }),
             catchError(error => ctx.dispatch(new FetchError(error))));
@@ -52,7 +54,7 @@ export class DemoState {
     }
     @Action(FetchError)
     fetchError(ctx: StateContext<DemoStateModel>, action: FetchError) {
-        console.log(`💀 error during fetch! ${action.error}`);
+        console.error(`💀 error during fetch! ${action.error}`);
         ctx.patchState({error: true});
     }
 }

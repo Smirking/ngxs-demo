@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { DemoState } from './ngxs/demo.state';
-import { DemoStateModel } from './ngxs/demo.model';
 import { IncrementCounter, FetchLego, SetCounter, DecrementCounter } from './ngxs/demo.actions';
 import { Observable } from 'rxjs';
+import { GlobalState } from './ngxs/global.state';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +11,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Ben\'s ngxs-demo thing';
+  title = 'an ngxs-demo thing';
   constructor(private store: Store) {}
 
   @Select(DemoState.counter)
   counter$: Observable<number>;
 
-  @Select((state: DemoStateModel) => state.legoOfTheDay)
+  @Select((state: GlobalState) => state.demoState.legoOfTheDay)
   legoOfTheDay$: Observable<string>;
 
   increment = () => {

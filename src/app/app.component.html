@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div style="text-align:center; padding:4px;">
     <div>
     <h1>
         Welcome to {{ title }}!
@@ -8,13 +8,13 @@
     </div>
     <div>
         <div>Random counter: {{counter$ | async}}</div>
-        <button (click)="increment()">Up!</button>
-        <button (click)="decrement()">Down!</button>
-        <button (click)="reset()">Zero!</button>
+        <button (click)="increment()">Up</button>
+        <button (click)="decrement()">Down</button>
+        <button (click)="reset()">Zero</button>
     </div>
 
     <div style="padding-top:20px;">
-        <div>Lego of the day: {{legoOfTheDay$ | async}}</div>
+        <div>Lego of the day: {{legoOfTheDay$ | async }}</div>
         <button (click)="fetchLego()">Fetch!</button>
     </div>
 </div>

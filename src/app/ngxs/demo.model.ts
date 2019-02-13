@@ -7,7 +7,7 @@ export interface DemoStateModel {
 export const generateInitalState = () => {
     return {
         counter: 0,
-        legoOfTheDay: '???',
+        legoOfTheDay: '',
         error: false,
     };
 };
