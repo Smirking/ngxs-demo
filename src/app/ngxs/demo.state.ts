@@ -1,6 +1,6 @@
 import { DemoStateModel, generateInitalState } from './demo.model';
 import { State, Selector, Action, StateContext } from '@ngxs/store';
-import { IncrementCounter, SetCounter, FetchLego, FetchLegoSuccess, FetchError } from './demo.actions';
+import { IncrementCounter, SetCounter, FetchLego, FetchLegoSuccess, FetchError, DecrementCounter } from './demo.actions';
 import { LegoService } from '../lego.service';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -22,7 +22,7 @@ export class DemoState {
             counter: ctx.getState().counter + 1,
         });
     }
-    @Action(IncrementCounter)
+    @Action(DecrementCounter)
     decrementCounter(ctx: StateContext<DemoStateModel>) {
         ctx.patchState({
             counter: ctx.getState().counter - 1,
@@ -50,7 +50,7 @@ export class DemoState {
             legoOfTheDay: action.name,
         });
     }
-    @Action(FetchLego)
+    @Action(FetchError)
     fetchError(ctx: StateContext<DemoStateModel>, action: FetchError) {
         console.log(`💀 error during fetch! ${action.error}`);
         ctx.patchState({error: true});
