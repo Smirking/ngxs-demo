@@ -29,3 +29,4 @@ export class FetchError {
     static type = DemoActions.FETCH_ERROR;
     constructor(public error: Error) {}
 }
+
